@@ -1,3 +1,10 @@
+L-NIC project custom riscv-opcodes.
+
+Note: For now, only riscv-opcodes and riscv-isa-sim contain custom
+forks of the riscv repositories. If you wish to track changes
+in riscv-openocd, riscv-pk, or riscv-tests, you will need to fork
+the upstream repo and update the firechip submodules first.
+
 riscv-opcodes
 ===========================================================================
 
