@@ -1,5 +1,6 @@
-@custom0            rd rs1 imm12 14..12=0 6..2=0x02 1..0=3
-@custom0.rs1        rd rs1 imm12 14..12=2 6..2=0x02 1..0=3
+nicread            rd rs1 rs2 31..25=0  14..12=0 6..2=0x02 1..0=3
+# TODO: Why is there no func3=1 defined here?
+nicwrite           rd rs1 rs2 31..25=0  14..12=2 6..2=0x02 1..0=3
 @custom0.rs1.rs2    rd rs1 imm12 14..12=3 6..2=0x02 1..0=3
 @custom0.rd         rd rs1 imm12 14..12=4 6..2=0x02 1..0=3
 @custom0.rd.rs1     rd rs1 imm12 14..12=6 6..2=0x02 1..0=3
@@ -25,3 +26,6 @@
 @custom3.rd         rd rs1 imm12 14..12=4 6..2=0x1E 1..0=3
 @custom3.rd.rs1     rd rs1 imm12 14..12=6 6..2=0x1E 1..0=3
 @custom3.rd.rs1.rs2 rd rs1 imm12 14..12=7 6..2=0x1E 1..0=3
+
+# addw    rd rs1 rs2 31..25=0  14..12=0 6..2=0x0E 1..0=3
+# # # #
