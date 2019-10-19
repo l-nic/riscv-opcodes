@@ -4,7 +4,7 @@ ISASIM_H := ../riscv-isa-sim/riscv/encoding.h
 PK_H := ../riscv-pk/machine/encoding.h
 ENV_H := ../riscv-tests/env/encoding.h
 OPENOCD_H := ../riscv-openocd/src/target/riscv/encoding.h
-BINUTILS_H := /home/vagrant/binutils-gdb/include/opcode/riscv-opc.h
+BINUTILS_H := ../binutils-gdb/include/opcode/riscv-opc.h
 
 ALL_OPCODES := opcodes-pseudo opcodes opcodes-rvc opcodes-rvc-pseudo opcodes-custom opcodes-rvv opcodes-rvv-pseudo
 
@@ -14,8 +14,9 @@ $(ISASIM_H) $(PK_H) $(ENV_H) $(OPENOCD_H): $(ALL_OPCODES) parse_opcodes encoding
 	cp encoding.h $@
 	cat opcodes opcodes-rvc-pseudo opcodes-rvc opcodes-custom opcodes-rvv | python ./parse_opcodes -c >> $@
 
-$(BINUTILS_H): $(ALL_OPCODES) parse_opcodes
+$(BINUTILS_H): $(ALL_OPCODES) parse_opcodes csr_alias_encoding.h
 	cat opcodes opcodes-rvc-pseudo opcodes-rvc opcodes-custom opcodes-rvv | python ./parse_opcodes -c > $@
+	cat csr_alias_encoding.h >> $@
 
 inst.chisel: $(ALL_OPCODES) parse_opcodes
 	cat opcodes opcodes-rvc opcodes-rvc-pseudo opcodes-custom opcodes-rvv opcodes-rvv-pseudo opcodes-pseudo | ./parse_opcodes -chisel > $@
