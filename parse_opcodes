@@ -82,11 +82,23 @@ csrs = [
   (0x042, 'ucause'),
   (0x043, 'utval'),
   (0x044, 'uip'),
-  (0x050, 'lread'),
-  (0x051, 'lwrite'),
+
+  # LNIC specific
+  # R/W
+  (0x050, 'lownid'),
+  # Read-only
+  (0x051, 'lread'),
   (0x052, 'lmsgsrdy'),
   (0x053, 'lrdend'),
-  (0x054, 'lwrend'), # TODO: Go over tradeoff between efficiency of encoding and number of program instructions
+  (0x054, 'lrdsrciplo'),
+  (0x055, 'lrdsrciphi'),
+  (0x056, 'lrdsrcprt'),
+  # Write-only
+  (0x057, 'lwrite'),
+  (0x058, 'lwrend'), 
+  (0x059, 'lwrdstiplo'),
+  (0x05A, 'lwrdstiphi'),
+  (0x05B, 'lwrdstprt'),
 
   # Standard User RO
   (0xC00, 'cycle'),
